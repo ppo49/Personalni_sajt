@@ -1,0 +1,103 @@
+html, body{
+    min-height: 80%;
+    margin: 0;
+    display: grid;
+    place-items: center;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    scroll-behavior: smooth;
+
+}
+
+.mainContent{
+    display: grid;
+    place-items: start; 
+    text-align: left;  
+  
+    width: 100%;
+    max-width: 650px;  
+    box-sizing: border-box;    
+    padding: 20px;
+    /*border: 1px solid #ccc;*/
+
+}
+
+h1{
+    font-size: clamp(1.5rem, 6vw, 2rem);
+}
+
+a{
+    text-decoration: none;
+    color: inherit;
+}
+
+.mainContent ul{
+    justify-self: start;
+    /*padding-left: 20px;*/
+    font-size: 20px;
+    list-style: none;
+}
+
+@media (max-width: 480px){
+    .mainContent{
+        max-width: none;
+        margin: 0 12px;        /* small gap from the screen edges */
+        width: auto;
+    }
+}
+
+
+
+/*cs tabs*/
+/*
+.cs-tabs {
+    width: 100%;
+    height: 400px;
+}*/
+
+.cs-tabs .panel {
+    height: 340px;
+    overflow-y: auto;
+    box-sizing: border-box;
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+    .mainContent {
+        width: 100%;
+        margin: 20px auto;
+        padding: 12px;
+    }
+/*
+    .cs-tabs {
+        height: 400px;
+    }*/
+
+    .cs-tabs .panel {
+        height: 340px;
+    }
+}
+
+/*CV pop up*/
+.cs-dialog {
+    width: 90%;
+    max-width: 900px;
+    max-height: 90vh;
+    padding: 0;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.cs-dialog .content {
+    max-height: 80vh;
+    overflow: auto;
+    padding: 15px;
+    box-sizing: border-box;
+}
+
+.cs-dialog .content img {
+    display: block;
+    width: 100%;
+    height:auto;
+    max-width: 800px;
+    margin: 0 auto;
+}

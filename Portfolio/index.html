@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>hi</title>
+
+    <!--<link rel="stylesheet"
+        href="https://unpkg.com/cs16.css@latest/dist/cs16.min.css">
+    -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/ekmas/cs16.css@main/css/cs16.min.css">
+
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+
+    <div class="mainContent">
+
+        <h1>Nikola Popović</h1>
+        <h2>Developer from Serbia</h2>
+        <br>
+
+        <div class="cs-tabs">
+            <input class="radiotab" name="tabs" tabindex="1" type="radio" id="tabone" checked="checked" />
+            <label class="label" for="tabone">About</label>
+            <div class="panel" tabindex="1">
+                <h2>About me</h2>
+                <p style="padding-bottom: 10px;">
+                    If you dont want to read the full about section,
+                <div class="cs-tooltip" style="padding: 0%;">
+                    <a href="assets/Nikola_Popović_CV.pdf" download="Nikola-Popovic-CV.pdf"
+                        style="text-decoration: underline; font-weight: bold;">
+                        You can download my CV here.
+                    </a>
+                    <span style="left: 106%" class="text">Download my CV</span>
+                </div>
+                </p><br>
+                <section>
+                    <button type="button" class="cs-btn" onclick="document.querySelector('.cs-dialog').showModal();">
+                        Or you can preview my CV here!
+                    </button>
+                    <dialog class="cs-dialog">
+                        <form method="dialog">
+                            <div class="heading">
+                                <div class="wrapper">
+                                    <div class="icon"></div>
+                                    <p class="text">Nikola Popović CV</p>
+                                </div>
+                                <button class="cs-btn close"></button>
+                            </div>
+                            <div class="content">
+                                <img src="assets/Nikola_Popović_CV_1.png" alt="CV">
+                            </div>
+                            <menu class="footer-btns">
+                                <button class="cs-btn">OK</button>
+                            </menu>
+                        </form>
+                    </dialog>
+                </section><br>
+                <p>
+                    HeYa! I'm Nikola and i am a recent Software Engineering graduate
+                    focused on backend development, complemented by foundational
+                    frontend skills (as you can observe lmao).
+                    I love working in software development and expanding my knowledge
+                    trough working on weird specific projects.
+                </p>
+                <p>
+                    Trough this journey I have built some intresting and weird projects
+                    such as a software for managing fire protection organization activities
+                    and a full-stack sports betting web application.
+                </p>
+                <p>
+                    My journey started when I was a lil jit. I was always interested in
+                    computers and the inner workings of software and generally how does one
+                    box with flickering lights contain all the knowledge of the world,
+                    and friv games too.
+                    I've enrolled in ETŠ Zemun highshcool
+                    where I finished as one of the best students of my HS generation.
+                    I owe a lot to the professors from that institution since they have teached me
+                    a lot and put on with my tomfoolery for 4 years.
+                    After I graduated highschool in 2022. I enrolled at Singidunum Univesity's
+                    Faculty of Technical Sciences where I got my bachelores degree.
+                    This is the place where i truly expanded my knowledge of software
+                    architecture and project managment and where from a broke programmer i
+                    became a full on software enginner and architect(still broke).
+                </p>
+                <p>
+                    Since i recently graduated, Im looking for an internship or a
+                    junior developer role, my talents are availlable...
+                </p>
+                <hr class="cs-hr">
+                <h3>Intrests (yap session)</h3>
+                <p>
+                    As I've mentioned above I love software development so in my free
+                    time i like to expand my knowledge of development trough building
+                    fun personal projects. Other then that I like to think of myself as a
+                    creative person. I've come to a personal conclusion that
+                    I have the best and most niche music taste in the world.
+                    I play the bass guitar in a fake band called Kolosek (est. 2024) with my friend
+                    . We have zero songs and 10 The Smiths covers
+                    (eleventh coming soon). We are activley looking for a drummer.
+                    I like sports such as basketball where Im a recreational player for
+                    the mighty Borac Ledine. Other than that Im a frequent gym goer,
+                    mountain hiking enthusiast and coffe drinking expert.
+                    Peak Gold I in League because Im cursed.
+                    In three words i would describe myslef as: Creative, Problem-solving,
+                    Niche. Thats 4 words but this is my site so I can do what ever I want.
+                    If you are still reading this, thank you for going trough my intrests
+                    tangent and have a nice day, In the words of the
+                    great late Ozzy Ousbourne <i>euugh somebodies been in my fridge
+                        drinking my beer...</i>
+                </p>
+
+
+            </div>
+            <input class="radiotab" tabindex="1" name="tabs" type="radio" id="tabtwo" />
+            <label class="label" for="tabtwo">Skills</label>
+            <div class="panel" tabindex="1">
+                <h2>Tab Two Content</h2>
+                <p>Tab content...
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus aliquid ipsa autem tempora, consectetur at amet nisi in adipisci iusto. Cumque, perferendis nisi earum qui repudiandae saepe cupiditate a fugit.
+                </p>
+            </div>
+            <input class="radiotab" tabindex="1" name="tabs" type="radio" id="tabthree" />
+            <label class="label" for="tabthree">Work</label>
+            <div class="panel" tabindex="1">
+                <h2>Work experience</h2>
+                <p>Tab content... Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum delectus excepturi sapiente suscipit, dolorem iusto rem veritatis ipsa fugiat? Ad aut obcaecati similique laborum. Sint nisi quod eveniet distinctio sapiente.</p>
+            </div>
+            <input class="radiotab" tabindex="1" name="tabs" type="radio" id="tabfour" />
+            <label class="label" for="tabfour">Projects</label>
+            <div class="panel" tabindex="1">
+                <h2>Tab Three Content</h2>
+                <p>Tab content...
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi laudantium esse aspernatur dolorum? Inventore atque vero at hic ratione distinctio placeat sapiente necessitatibus. Amet, ut rem quam vero possimus asperiores!
+                </p>
+            </div>
+            <input class="radiotab" tabindex="1" name="tabs" type="radio" id="tabfive" />
+            <label class="label" for="tabfive">Contact</label>
+            <div class="panel" tabindex="1">
+                <h2>Contact info and my socials</h2><br>
+
+
+                <p>My work E-mail: <br> &nbsp; nikolap1205@gmail.com</p>
+
+
+                <div class="cs-tooltip">
+                    <a href="https://www.linkedin.com/in/nikola-popovic4949">LinkedIn</a>
+                    <span style="left: 125%" class="text">linkedin.com/in/nikola-popovic4949</span>
+                </div><br>
+                <div class="cs-tooltip">
+                    <a href="https://github.com/ppo49">GitHub</a>
+                    <span style="left: 125%" class="text">github.com/ppo49</span>
+                </div><br>
+                <div class="cs-tooltip">
+                    <a href="https://www.instagram.com/nikolapopovic49/">Instagram</a>
+                    <span style="left: 125%" class="text">instagram.com/nikolapopovic49</span>
+                </div>
+
+                </ul>
+            </div>
+        </div>
+
+
+
+    </div>
+
+</body>
+
+</html>
