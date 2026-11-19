@@ -13,6 +13,27 @@
 
     <link rel="stylesheet" href="css/style.css">
 
+    <script>
+        // Source - https://stackoverflow.com/a/22255424
+        // Posted by SparoHawk
+        // Retrieved 2026-11-19, License - CC BY-SA 3.0
+
+        // This is the code to preload the images
+        var imageList = Array();
+        for (var i = 1; i <= 5; i++) {
+            imageList[i] = new Image(70, 70);
+            imageList[i].src = "assets/sl" + i + ".jpg";
+        }
+
+        function switchImage() {
+            var selectedImage = document.myForm.switch.options[document.myForm.switch.selectedIndex].value;
+            document.myImage.src = imageList[selectedImage].src;
+        }
+
+    </script>
+
+
+
 </head>
 
 <body>
@@ -26,13 +47,13 @@
         <div class="cs-tabs">
             <input class="radiotab" name="tabs" tabindex="1" type="radio" id="tabone" checked="checked" />
             <label class="label" for="tabone">About</label>
-            <div class="panel" tabindex="1">
+            <div class="panel" tabindex="1" style="user-select: text !important;">
                 <h2>About me</h2>
                 <p style="padding-bottom: 10px;">
                     If you dont want to read the full about section,
                 <div class="cs-tooltip" style="padding: 0%;">
                     <a href="assets/Nikola_Popović_CV.pdf" download="Nikola-Popovic-CV.pdf"
-                        style="text-decoration: underline; font-weight: bold;">
+                        style="text-decoration: underline; font-weight: bold;" target="_blank">
                         You can download my CV here.
                     </a>
                     <span style="left: 106%" class="text">Download my CV</span>
@@ -60,6 +81,25 @@
                         </form>
                     </dialog>
                 </section><br>
+                <!--OVDE*******-->
+                <img src="assets/sl1.jpg" alt="slika" width="160" height="200" name="myImage" class="wrap-img" />
+                <label class="cs-select__label" for="switch">Choose model:</label>
+                <form action="" name="myForm">
+                    <select class="cs-select" name="switch" id="slike" onchange="switchImage()">
+                        <option value="1">Niche_me</option>
+                        <option value="2">Italy_me</option>
+                        <option value="3">Gym_me</option>
+                        <option value="4">Found_footage_me</option>
+                        <option value="5">Gym_me_2</option>
+                    </select>
+                </form>
+                <br>
+                <p style="font-weight: bold;">
+                    Country of Origin: Serbia <br>
+                </p>
+                <p style="font-weight: bold;">
+                    Year of birth: 2003 <br>
+                </p><br>
                 <p>
                     HeYa! I'm Nikola and i am a recent Software Engineering graduate
                     focused on backend development, complemented by foundational
@@ -72,6 +112,7 @@
                     such as a software for managing fire protection organization activities
                     and a full-stack sports betting web application.
                 </p>
+                <hr class="cs-hr">
                 <p>
                     My journey started when I was a lil jit. I was always interested in
                     computers and the inner workings of software and generally how does one
@@ -113,61 +154,286 @@
                     great late Ozzy Ousbourne <i>euugh somebodies been in my fridge
                         drinking my beer...</i>
                 </p>
-
-
             </div>
             <input class="radiotab" tabindex="1" name="tabs" type="radio" id="tabtwo" />
             <label class="label" for="tabtwo">Skills</label>
             <div class="panel" tabindex="1">
-                <h2>Tab Two Content</h2>
-                <p>Tab content...
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus aliquid ipsa autem tempora, consectetur at amet nisi in adipisci iusto. Cumque, perferendis nisi earum qui repudiandae saepe cupiditate a fugit.
-                </p>
+                <h2 style="margin-bottom: 5px;">Technical skills</h2>
+
+                <h3 class="h3-skills">Programming Languages</h3>
+
+                <div class="cs-tooltip">
+                    <img src="assets/icons/Icons8/icons8-c-sharp-logo-48.png" alt="csharp" />
+                    <span style="left: 125%" class="text">C#</span>
+                </div>
+                <div class="cs-tooltip">
+                    <img src="assets/icons//Icons8/icons8-c++-48.png" alt="cpp" />
+                    <span class="text">C++</span>
+                </div>
+                <div class="cs-tooltip">
+                    <img src="assets/icons/Icons8/icons8-java-48.png" alt="java" />
+                    <span class="text">Java</span>
+                </div>
+                <div class="cs-tooltip">
+                    <img src="assets/icons/Icons8/icons8-python-48.png" alt="python" />
+                    <span class="text">Python</span>
+                </div>
+                <div class="cs-tooltip">
+                    <img src="assets/icons/Icons8/icons8-javascript-48.png" alt="js" />
+                    <span class="text">JavaScript</span>
+                </div>
+                <div class="cs-tooltip">
+                    <img src="assets/icons/Icons8/icons8-typescript-48.png" alt="ts">
+                    <span class="text">TypeScript</span>
+                </div>
+
+                <h3 class="h3-skills">Backend technologies</h3>
+
+                <div class="cs-tooltip">
+                    <img src="assets/icons/Icons8/dotnet.png" alt="dotnet" style="height: 44px; width: 44px;" />
+                    <span class="text">.NET</span>
+                </div>
+                <div class="cs-tooltip">
+                    <img src="assets/icons/Icons8/asp-net-core.png" alt="aspcore" style="height: 44px; width: 44px;" />
+                    <span class="text">ASP.NET Core</span>
+                </div>
+                <div class="cs-tooltip">
+                    <img src="assets/icons/Icons8/entityframeworkcore-line-64px.png" alt="efcore"
+                        style="height: 44px; width: 44px;" />
+                    <span class="text">Entity Framework Core</span>
+                </div>
+
+                <h3 class="h3-skills">Frontend technologies</h3>
+
+                <div class="cs-tooltip">
+                    <img src="assets/icons/Icons8/html-5.png" alt="html5" style="height: 40px; width: 40px;" />
+                    <span class="text">HTML5</span>
+                </div>
+                <div class="cs-tooltip">
+                    <img src="assets/icons/Icons8/css.png" alt="css3" style="height: 40px; width: 44px;" />
+                    <span class="text">CSS3</span>
+                </div>
+                <div class="cs-tooltip">
+                    <img src="assets/icons/Icons8/icons8-bootstrap-48.png" alt="bootstrap"
+                        style="height: 40px; width: 44px;" />
+                    <span class="text">Bootstrap</span>
+                </div>
+                <div class="cs-tooltip">
+                    <img src="assets/icons/Icons8/icons8-angular-48.png" alt="angular"
+                        style="height: 40px; width: 44px;" />
+                    <span class="text">Angular</span>
+                </div>
+                <div class="cs-tooltip">
+                    <img src="assets/icons/Icons8/blazor.png" alt="blazor" style="height: 42px; width: 42px;">
+                    <span class="text">Blazor</span>
+                </div>
+
+                <h3 class="h3-skills">Databases</h3>
+
+                <div class="cs-tooltip">
+                    <img src="assets/icons/Icons8/icons8-mysql-48.png" alt="mysql" />
+                    <span class="text">MySQL</span>
+                </div>
+                <div class="cs-tooltip">
+                    <img src="assets/icons/Icons8/microsoft-sql-server-light.png" alt="mssql"
+                        style="height: 44px; width: 60px;" />
+                    <span class="text">Microsoft SQL Server</span>
+                </div>
+                <div class="cs-tooltip">
+                    <img src="assets/icons/Icons8/sqlite.png" alt="sqlite" style="height: 42px; width: 85px;" />
+                    <span class="text">SQLite</span>
+                </div>
+                <div class="cs-tooltip">
+                    <img src="assets/icons/Icons8/icons8-postgresql-48.png" alt="postgresql" />
+                    <span class="text">PostgreSQL</span>
+                </div>
+                <div class="cs-tooltip">
+                    <img src="assets/icons/Icons8/icons8-mongo-db-48.png" alt="mongodb">
+                    <span class="text">MongoDB</span>
+                </div>
+
+                <h3 class="h3-skills">Development Tools and Deployment</h3>
+
+                <div class="cs-tooltip">
+                    <img src="assets/icons/Icons8/icons8-git-48.png" alt="git">
+                    <span class="text">Git</span>
+                </div>
+                <div class="cs-tooltip">
+                    <img src="assets/icons/Icons8/icons8-github-48.png" alt="github">
+                    <span class="text">GitHub</span>
+                </div>
+                <div class="cs-tooltip">
+                    <img src="assets/icons/Icons8/icons8-powershell-48.png" alt="powershell" />
+                    <span class="text">PowerShell</span>
+                </div>
+                <div class="cs-tooltip">
+                    <img src="assets/icons/Icons8/icons8-visual-studio-48.png" alt="visualstudio" />
+                    <span class="text">Visual Studio</span>
+                </div>
+                <div class="cs-tooltip">
+                    <img src="assets/icons/Icons8/icons8-visual-studio-code-48.png" alt="vscode" />
+                    <span class="text">Visual Studio Code</span>
+                </div>
+                <div class="cs-tooltip">
+                    <img src="assets/icons/Icons8/icons8-notepad++-48.png" alt="notepad++" />
+                    <span class="text">Notepad++</span>
+                </div>
+                <div class="cs-tooltip">
+                    <img src="assets/icons/Icons8/icons8-microsoft-office-48.png" alt="msoffice" />
+                    <span class="text">Microsoft Office</span>
+                </div>
+                <div class="cs-tooltip">
+                    <img src="assets/icons/Icons8/azure.png" alt="azure" style="height: 44px; width: 44px;" />
+                    <span class="text">Microsoft Azure</span>
+                </div>
+                <div class="cs-tooltip">
+                    <img src="assets/icons/Icons8/masp.png" alt="masp" style="height: 44px; width: 44px;" />
+                    <span class="text">MonsterASP.NET</span>
+                </div>
+                <h3 class="h3-skills">Languages</h3>
+                <p style="user-select: text !important;">Serbian (Native), English (Fluent), French (Learning)</p>
             </div>
             <input class="radiotab" tabindex="1" name="tabs" type="radio" id="tabthree" />
             <label class="label" for="tabthree">Work</label>
-            <div class="panel" tabindex="1">
-                <h2>Work experience</h2>
-                <p>Tab content... Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum delectus excepturi sapiente suscipit, dolorem iusto rem veritatis ipsa fugiat? Ad aut obcaecati similique laborum. Sint nisi quod eveniet distinctio sapiente.</p>
+            <div class="panel" tabindex="1" style="user-select: text !important;">
+                <h2 style="padding-bottom: 10px;">Work experience</h2>
+                <p>
+                    As a recent Software Engineering graduate, I am currently looking for opportunities to
+                    gain professional experience, further develop my technical skills, and contribute to interesting
+                    software development projects. <br> <br>
+                    I am open to internships and junior developer positions.
+                </p>
+
             </div>
             <input class="radiotab" tabindex="1" name="tabs" type="radio" id="tabfour" />
             <label class="label" for="tabfour">Projects</label>
-            <div class="panel" tabindex="1">
-                <h2>Tab Three Content</h2>
-                <p>Tab content...
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi laudantium esse aspernatur dolorum? Inventore atque vero at hic ratione distinctio placeat sapiente necessitatibus. Amet, ut rem quam vero possimus asperiores!
+            <div class="panel" tabindex="1" style="user-select: text !important;">
+                <h2 style="padding-bottom: 20px;">Some interesting personal projects</h2>
+                <div class="div-title">
+                    <h3>
+                        <div class="cs-tooltip">
+                            <a href="https://github.com/ppo49/PopBet" target="_blank" style="text-decoration: underline;">PopBet</a>
+                            <span style="left: 125%" class="text">github.com/ppo49/PopBet</span>
+                        </div>
+                    </h3>
+                    <span>October 2026 – Present</span>
+                </div>
+                <p>
+                    Full-stack sports betting web application, deployed to production (.NET, Blazor, EF Core).
                 </p>
+                <br>
+                <section>
+                    <button type="button" class="cs-btn" onclick="document.getElementById('pd-popbet').showModal();">
+                        Project description
+                    </button>
+                    <dialog class="cs-dialog" id="pd-popbet">
+                        <form method="dialog">
+                            <div class="heading">
+                                <div class="wrapper">
+                                    <div class="icon"></div>
+                                    <p class="text">Project description</p>
+                                </div>
+                                <button class="cs-btn close"></button>
+                            </div>
+                            <div class="content">
+                                <p style="user-select: text !important;">
+                                    Developed and deployed a full-stack sports betting web application with Blazor and
+                                    EF Core
+                                    (SQLite, code-first migrations), used by me and my friends, hosted on MonsterASP.
+                                    <br><br>
+                                    - Maintaining the live application with regular feature updates, deploying from
+                                    GitHub via MonsterASP.
+                                    <br><br>
+                                    - Implemented a cookie-based authentication with Admin and Standard roles, tickets,
+                                    picks,
+                                    betting history and leaderboards. <br><br>
+                                    - Designed a responsive single-page UI with Bootstrap, including mobile-friendly
+                                    layouts.
+                                </p>
+
+                            </div>
+                            <menu class="footer-btns">
+                                <button class="cs-btn">OK</button>
+                            </menu>
+                        </form>
+                    </dialog>
+                </section><br>
+                <hr class="cs-hr"><br>
+                <div class="div-title">
+                    <h3>
+                        <div class="cs-tooltip">
+                            <a href="https://github.com/ppo49/ZOP_2026" target="_blank" style="text-decoration: underline;">ZOP</a>
+                            <span style="left: 125%" class="text">github.com/ppo49/ZOP_2026</span>
+                        </div>
+                    </h3>
+                    <span>July 2026 – Present</span>
+                </div>
+                <p>
+                    Software solution for managing fire protection organization activities, currently in beta (C#, .NET,
+                    EF Core, MySQL).
+                </p>
+                <br>
+                <section>
+                    <button type="button" class="cs-btn" onclick="document.getElementById('pd-zop').showModal();">
+                        Project description
+                    </button>
+                    <dialog class="cs-dialog" id="pd-zop">
+                        <form method="dialog">
+                            <div class="heading">
+                                <div class="wrapper">
+                                    <div class="icon"></div>
+                                    <p class="text">Project description</p>
+                                </div>
+                                <button class="cs-btn close"></button>
+                            </div>
+                            <div class="content">
+                                <p style="user-select: text !important;">
+                                    - Developing a reusable and adaptable backend using C#, EF Core, and MySQL. <br>
+                                    <br>
+                                    - Implementing automated Word and Excel report generation using the OpenXML SDK.
+                                    <br><br>
+                                    - Implementing an automated notification system for deadlines. <br><br>
+                                </p>
+
+                            </div>
+                            <menu class="footer-btns">
+                                <button class="cs-btn">OK</button>
+                            </menu>
+                        </form>
+                    </dialog>
+                </section><br>
             </div>
             <input class="radiotab" tabindex="1" name="tabs" type="radio" id="tabfive" />
             <label class="label" for="tabfive">Contact</label>
-            <div class="panel" tabindex="1">
+            <div class="panel" tabindex="1" style="user-select: text !important;">
                 <h2>Contact info and my socials</h2><br>
 
 
-                <p>My work E-mail: <br> &nbsp; nikolap1205@gmail.com</p>
+                <p style="font-size: large;">My work E-mail: <br> &nbsp; nikolap1205@gmail.com</p><br>
 
 
-                <div class="cs-tooltip">
-                    <a href="https://www.linkedin.com/in/nikola-popovic4949">LinkedIn</a>
+                <div class="cs-tooltip" style="padding-bottom: 10px;">
+                    <a href="https://www.linkedin.com/in/nikola-popovic4949" style="font-size: large;">LinkedIn</a>
                     <span style="left: 125%" class="text">linkedin.com/in/nikola-popovic4949</span>
                 </div><br>
-                <div class="cs-tooltip">
-                    <a href="https://github.com/ppo49">GitHub</a>
+                <div class="cs-tooltip" style="padding-bottom: 10px;">
+                    <a href="https://github.com/ppo49" style="font-size: large;">GitHub</a>
                     <span style="left: 125%" class="text">github.com/ppo49</span>
                 </div><br>
-                <div class="cs-tooltip">
-                    <a href="https://www.instagram.com/nikolapopovic49/">Instagram</a>
+                <div class="cs-tooltip" style="padding-bottom: 10px;">
+                    <a href="https://www.instagram.com/nikolapopovic49/" style="font-size: large;">Instagram</a>
                     <span style="left: 125%" class="text">instagram.com/nikolapopovic49</span>
                 </div>
 
                 </ul>
             </div>
         </div>
-
-
-
     </div>
-
+    <footer>
+        <p style="font-size: smaller; color: gray;">
+            &copy; 2026 Nikola Popović. Released under the MIT License.
+        </p>
+    </footer>
 </body>
 
 </html>

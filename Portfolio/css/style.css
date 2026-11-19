@@ -1,4 +1,5 @@
-html, body{
+html,
+body {
     min-height: 80%;
     margin: 0;
     display: grid;
@@ -8,39 +9,40 @@ html, body{
 
 }
 
-.mainContent{
+.mainContent {
     display: grid;
-    place-items: start; 
-    text-align: left;  
-  
+    place-items: start;
+    text-align: left;
+
     width: 100%;
-    max-width: 650px;  
-    box-sizing: border-box;    
+    max-width: 750px;
+    box-sizing: border-box;
     padding: 20px;
     /*border: 1px solid #ccc;*/
 
 }
 
-h1{
+h1 {
     font-size: clamp(1.5rem, 6vw, 2rem);
 }
 
-a{
+a {
     text-decoration: none;
     color: inherit;
 }
 
-.mainContent ul{
+.mainContent ul {
     justify-self: start;
     /*padding-left: 20px;*/
     font-size: 20px;
     list-style: none;
 }
 
-@media (max-width: 480px){
-    .mainContent{
+@media (max-width: 480px) {
+    .mainContent {
         max-width: none;
-        margin: 0 12px;        /* small gap from the screen edges */
+        margin: 0 12px;
+        /* small gap from the screen edges */
         width: auto;
     }
 }
@@ -48,16 +50,20 @@ a{
 
 
 /*cs tabs*/
-/*
+
 .cs-tabs {
     width: 100%;
-    height: 400px;
-}*/
+    max-width: 100%;
+    min-width: 0;
+}
 
 .cs-tabs .panel {
-    height: 340px;
+    height: 440px;
     overflow-y: auto;
+    overflow-x: hidden;
     box-sizing: border-box;
+    min-width: 0;
+    max-width: 100%;
 }
 
 /* Mobile */
@@ -67,7 +73,8 @@ a{
         margin: 20px auto;
         padding: 12px;
     }
-/*
+
+    /*
     .cs-tabs {
         height: 400px;
     }*/
@@ -97,7 +104,39 @@ a{
 .cs-dialog .content img {
     display: block;
     width: 100%;
-    height:auto;
+    height: auto;
     max-width: 800px;
     margin: 0 auto;
+}
+
+
+/*slika*/
+.wrap-img {
+    float: left;
+    margin: 0 20px 10px 0px;
+    /* Adds space on the right and bottom */
+    width: 200px;
+    border: 1px solid #ccc;
+}
+
+
+
+  @media (max-width: 600px) {
+    .wrap-img {
+      float: none;        /* Stops text wrapping */
+      display: block;     /* Places image on its own line */
+      width: 100%;        /* Makes image span full width (optional) */
+      margin: 0 0 15px 0; /* Moves spacing strictly to the bottom */
+    }
+  }
+
+.h3-skills{
+    padding-top: 10px;
+    padding-bottom: 20px;
+}
+
+.div-title{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
