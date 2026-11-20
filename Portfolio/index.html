@@ -32,6 +32,37 @@
 
     </script>
 
+    <script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
+    <script>
+        async function loadBlog() {
+            const list = document.getElementById('blog-list');
+            try{
+                const files = await (await fetch('blog/posts.json')).json(); //fetchuje imena fajlova iz jsona
+                for(const file in files){
+                    const md = await (await fetch('blog/'+file)).text(); //za individualni md
+                    
+                    //za naslov
+                    const m = md.match(/^#\s+(.+)$/m);
+                    const title = m ? m[1] : file.replace('.md', ''); //kreiraj naslov iz naslova mda
+
+                    const btn =  document.createElement('button');
+                    btn.type = 'button';
+                    btn.className = 'cs-btn';
+                    btn.textContent = 'title';
+                    btn.onclick = () => { //popunjavanje dialog panela
+                        document.getElementById('blog-title').textContent = title;
+                        document.getElementById('blog-content').innerHTML = marked.parse(md);
+                        document.getElementById('blog-dialog').showModal();
+                    };
+                    list.append(btn,' ');
+                }
+            } catch(e){
+                list.textContent = 'no posts yet.'
+            }
+        }
+        loadBlog();
+    </script>
+
 
 
 </head>
@@ -312,7 +343,8 @@
                 <div class="div-title">
                     <h3>
                         <div class="cs-tooltip">
-                            <a href="https://github.com/ppo49/PopBet" target="_blank" style="text-decoration: underline;">PopBet</a>
+                            <a href="https://github.com/ppo49/PopBet" target="_blank"
+                                style="text-decoration: underline;">PopBet</a>
                             <span style="left: 125%" class="text">github.com/ppo49/PopBet</span>
                         </div>
                     </h3>
@@ -362,7 +394,8 @@
                 <div class="div-title">
                     <h3>
                         <div class="cs-tooltip">
-                            <a href="https://github.com/ppo49/ZOP_2026" target="_blank" style="text-decoration: underline;">ZOP</a>
+                            <a href="https://github.com/ppo49/ZOP_2026" target="_blank"
+                                style="text-decoration: underline;">ZOP</a>
                             <span style="left: 125%" class="text">github.com/ppo49/ZOP_2026</span>
                         </div>
                     </h3>
@@ -426,6 +459,28 @@
                 </div>
 
                 </ul>
+            </div>
+            <input class="radiotab" tabindex="1" name="tabs" type="radio" id="tabblog" />
+            <label class="label" for="tabblog">Blog</label>
+            <div class="panel" tabindex="1" style="user-select: text !important;">
+                <h2 style="padding-bottom: 20px;">Blog</h2>
+                <div id="blog-list"></div>
+
+                <dialog class="cs-dialog" id="blog-dialog">
+                    <form method="dialog">
+                        <div class="heading">
+                            <div class="wrapper">
+                                <div class="icon"></div>
+                                <p class="text" id="blog-title"></p>
+                            </div>
+                            <button class="cs-btn close"></button>
+                        </div>
+                        <div class="content" id="blog-content" style="user-select: text !important;"></div>
+                        <menu class="footer-btns">
+                            <button class="cs-btn">OK</button>
+                        </menu>
+                    </form>
+                </dialog>
             </div>
         </div>
     </div>
