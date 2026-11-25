@@ -162,3 +162,49 @@ a {
     flex-direction: column;
     gap: 10px;
 }
+
+
+
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+.cs-dialog {
+    width: calc(100vw - 24px);
+    max-width: 900px;
+    min-width: 0;
+    margin: auto;
+}
+
+.cs-dialog .content {
+    overflow-wrap: anywhere;
+}
+
+.cs-dialog img,
+.cs-dialog pre,
+.cs-dialog table {
+    max-width: 100%;
+}
+
+@media (max-width: 600px) {
+    .cs-tooltip .text {
+        left: 0 !important;
+        top: 100%;
+        max-width: 80vw;
+        white-space: normal;
+    }
+
+    .row {
+        grid-template-columns: 1fr;  
+        gap: 4px;
+    }
+}
