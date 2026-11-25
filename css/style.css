@@ -204,7 +204,11 @@ body {
     }
 
     .row {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap; 
         grid-template-columns: 1fr;  
-        gap: 4px;
+        gap: 8px;
+        font-size: small;
     }
 }
