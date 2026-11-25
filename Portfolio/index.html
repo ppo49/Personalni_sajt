@@ -38,7 +38,7 @@
             const list = document.getElementById('blog-list');
             try{
                 const files = await (await fetch('blog/posts.json')).json(); //fetchuje imena fajlova iz jsona
-                for(const file in files){
+                for(const file of files){
                     const md = await (await fetch('blog/'+file)).text(); //za individualni md
                     
                     //za naslov
@@ -48,7 +48,7 @@
                     const btn =  document.createElement('button');
                     btn.type = 'button';
                     btn.className = 'cs-btn';
-                    btn.textContent = 'title';
+                    btn.textContent = title;
                     btn.onclick = () => { //popunjavanje dialog panela
                         document.getElementById('blog-title').textContent = title;
                         document.getElementById('blog-content').innerHTML = marked.parse(md);
@@ -57,10 +57,11 @@
                     list.append(btn,' ');
                 }
             } catch(e){
+                console.error(e);
                 list.textContent = 'no posts yet.'
             }
         }
-        loadBlog();
+        document.addEventListener('DOMContentLoaded', loadBlog);
     </script>
 
 
@@ -460,8 +461,8 @@
 
                 </ul>
             </div>
-            <input class="radiotab" tabindex="1" name="tabs" type="radio" id="tabblog" />
-            <label class="label" for="tabblog">Blog</label>
+            <input class="radiotab" tabindex="1" name="tabs" type="radio" id="tabsix" />
+            <label class="label" for="tabsix">Blog</label>
             <div class="panel" tabindex="1" style="user-select: text !important;">
                 <h2 style="padding-bottom: 20px;">Blog</h2>
                 <div id="blog-list"></div>
