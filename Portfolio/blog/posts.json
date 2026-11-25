@@ -1,1 +1,4 @@
-["post2.md","post1.md"]
+[
+  { "file": "post1.md", "date": "2026-11-10" },
+  { "file": "post2.md", "date": "2026-11-20" }
+]

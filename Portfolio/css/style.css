@@ -42,7 +42,7 @@ a {
     .mainContent {
         max-width: none;
         margin: 0 12px;
-        /* small gap from the screen edges */
+
         width: auto;
     }
 }
@@ -114,29 +114,51 @@ a {
 .wrap-img {
     float: left;
     margin: 0 20px 10px 0px;
-    /* Adds space on the right and bottom */
     width: 200px;
     border: 1px solid #ccc;
 }
 
 
 
-  @media (max-width: 600px) {
+@media (max-width: 600px) {
     .wrap-img {
-      float: none;        /* Stops text wrapping */
-      display: block;     /* Places image on its own line */
-      width: 100%;        /* Makes image span full width (optional) */
-      margin: 0 0 15px 0; /* Moves spacing strictly to the bottom */
-    }
-  }
+        float: none;
+        /* Stops text wrapping */
+        display: block;
+        width: 160;
+        height: 220;
+        margin: 0 0 15px 0;
 
-.h3-skills{
+    }
+}
+
+.h3-skills {
     padding-top: 10px;
     padding-bottom: 20px;
 }
 
-.div-title{
+.div-title {
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+.row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    /* Creates 3 equal columns */
+    gap: 18px;
+}
+
+.blog-row {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    flex-wrap: wrap;
+}
+
+#blog-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }

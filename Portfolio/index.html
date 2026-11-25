@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>hi</title>
+    <title>heya</title>
 
     <!--<link rel="stylesheet"
         href="https://unpkg.com/cs16.css@latest/dist/cs16.min.css">
@@ -12,6 +12,15 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/ekmas/cs16.css@main/css/cs16.min.css">
 
     <link rel="stylesheet" href="css/style.css">
+
+    <!--
+Source - https://stackoverflow.com/a/35625707
+Posted by Michał Perłakowski, modified by community. See post 'Timeline' for change history
+Retrieved 2026-11-25, License - CC BY-SA 3.0
+-->
+
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/icons/Icons8/aphextwin3edited.png">
+
 
     <script>
         // Source - https://stackoverflow.com/a/22255424
@@ -22,7 +31,7 @@
         var imageList = Array();
         for (var i = 1; i <= 5; i++) {
             imageList[i] = new Image(70, 70);
-            imageList[i].src = "assets/sl" + i + ".jpg";
+            imageList[i].src = "assets/p" + i + ".png";
         }
 
         function switchImage() {
@@ -36,29 +45,44 @@
     <script>
         async function loadBlog() {
             const list = document.getElementById('blog-list');
-            try{
-                const files = await (await fetch('blog/posts.json')).json(); //fetchuje imena fajlova iz jsona
-                for(const file of files){
-                    const md = await (await fetch('blog/'+file)).text(); //za individualni md
-                    
-                    //za naslov
-                    const m = md.match(/^#\s+(.+)$/m);
-                    const title = m ? m[1] : file.replace('.md', ''); //kreiraj naslov iz naslova mda
+            if (!list) return;
+            try {
+                const posts = await (await fetch('blog/posts.json')).json();
+                posts.sort((a, b) => b.date.localeCompare(a.date)); // newest first
 
-                    const btn =  document.createElement('button');
+                for (const post of posts) {
+                    const md = await (await fetch('blog/' + post.file)).text();
+
+                    const m = md.match(/^#\s+(.+)$/m);
+                    const title = m ? m[1] : post.file.replace('.md', '');
+                    const dateText = new Date(post.date).toLocaleDateString('en-GB', {
+                        day: 'numeric', month: 'short', year: 'numeric'
+                    });
+
+                    const row = document.createElement('div');
+                    row.className = 'blog-row';
+
+                    const btn = document.createElement('button');
                     btn.type = 'button';
                     btn.className = 'cs-btn';
                     btn.textContent = title;
-                    btn.onclick = () => { //popunjavanje dialog panela
+                    btn.onclick = () => {
                         document.getElementById('blog-title').textContent = title;
-                        document.getElementById('blog-content').innerHTML = marked.parse(md);
+                        document.getElementById('blog-content').innerHTML =
+                            `<p style="opacity:.7">${dateText}</p>` + marked.parse(md);
                         document.getElementById('blog-dialog').showModal();
                     };
-                    list.append(btn,' ');
+
+                    const date = document.createElement('span');
+                    date.className = 'blog-date';
+                    date.textContent = dateText;
+
+                    row.append(btn, date);
+                    list.append(row);
                 }
-            } catch(e){
+            } catch (e) {
                 console.error(e);
-                list.textContent = 'no posts yet.'
+                list.textContent = 'No posts yet.';
             }
         }
         document.addEventListener('DOMContentLoaded', loadBlog);
@@ -74,7 +98,26 @@
 
         <h1>Nikola Popović</h1>
         <h2>Developer from Serbia</h2>
-        <br>
+        <p style="font-size: large; margin-top: 7px;">nikolap1205@gmail.com</p><br>
+
+        <div class="row">
+            <div class="cs-tooltip" style="padding-bottom: 10px;">
+                <a href="https://www.linkedin.com/in/nikola-popovic4949" style="font-size: large;"
+                    target="_blank">LinkedIn</a>
+                <span style="right: 125%" class="text">nikola-popovic4949</span>
+
+            </div>
+            <div class="cs-tooltip" style="padding-bottom: 10px;">
+                <a href="https://github.com/ppo49" style="font-size: large;" target="_blank">GitHub</a>
+                <span style="bottom: 100%; width: 100px; left: 50%; margin-left: -50px" class="text">ppo49</span>
+            </div>
+            <div class="cs-tooltip" style="padding-bottom: 10px;">
+                <a href="https://www.instagram.com/nikolapopovic49/" style="font-size: large;"
+                    target="_blank">Instagram</a>
+                <span style="left: 125%" class="text">nikolapopovic49</span>
+            </div>
+        </div>
+
 
         <div class="cs-tabs">
             <input class="radiotab" name="tabs" tabindex="1" type="radio" id="tabone" checked="checked" />
@@ -114,13 +157,13 @@
                     </dialog>
                 </section><br>
                 <!--OVDE*******-->
-                <img src="assets/sl1.jpg" alt="slika" width="160" height="200" name="myImage" class="wrap-img" />
+                <img src="assets/p1.png" alt="slika" width="160" height="220" name="myImage" class="wrap-img" />
                 <label class="cs-select__label" for="switch">Choose model:</label>
                 <form action="" name="myForm">
                     <select class="cs-select" name="switch" id="slike" onchange="switchImage()">
                         <option value="1">Niche_me</option>
-                        <option value="2">Italy_me</option>
-                        <option value="3">Gym_me</option>
+                        <option value="2">Gym_me</option>
+                        <option value="3">euromaxxing_me</option>
                         <option value="4">Found_footage_me</option>
                         <option value="5">Gym_me_2</option>
                     </select>
@@ -133,58 +176,56 @@
                     Year of birth: 2003 <br>
                 </p><br>
                 <p>
-                    HeYa! I'm Nikola and i am a recent Software Engineering graduate
-                    focused on backend development, complemented by foundational
-                    frontend skills (as you can observe lmao).
-                    I love working in software development and expanding my knowledge
-                    trough working on weird specific projects.
+                    HeYa! I'm Nikola, a recent Software Engineering graduate focused on backend
+                    development, complemented by foundational frontend skills
+                    (as you can observe lmao). I'm currently looking for an internship or a junior
+                    developer role, so my talents are available...
                 </p>
                 <p>
-                    Trough this journey I have built some intresting and weird projects
-                    such as a software for managing fire protection organization activities
-                    and a full-stack sports betting web application.
-                </p>
-                <hr class="cs-hr">
-                <p>
-                    My journey started when I was a lil jit. I was always interested in
-                    computers and the inner workings of software and generally how does one
-                    box with flickering lights contain all the knowledge of the world,
-                    and friv games too.
-                    I've enrolled in ETŠ Zemun highshcool
-                    where I finished as one of the best students of my HS generation.
-                    I owe a lot to the professors from that institution since they have teached me
-                    a lot and put on with my tomfoolery for 4 years.
-                    After I graduated highschool in 2022. I enrolled at Singidunum Univesity's
-                    Faculty of Technical Sciences where I got my bachelores degree.
-                    This is the place where i truly expanded my knowledge of software
-                    architecture and project managment and where from a broke programmer i
-                    became a full on software enginner and architect(still broke).
-                </p>
-                <p>
-                    Since i recently graduated, Im looking for an internship or a
-                    junior developer role, my talents are availlable...
+                    Through this journey I have built some interesting and weird projects, such as
+                    software for managing fire protection organization activities and a full-stack
+                    sports betting web application. I love expanding my knowledge by working on
+                    weird, specific projects.
                 </p>
                 <hr class="cs-hr">
-                <h3>Intrests (yap session)</h3>
                 <p>
-                    As I've mentioned above I love software development so in my free
-                    time i like to expand my knowledge of development trough building
-                    fun personal projects. Other then that I like to think of myself as a
-                    creative person. I've come to a personal conclusion that
-                    I have the best and most niche music taste in the world.
-                    I play the bass guitar in a fake band called Kolosek (est. 2024) with my friend
-                    . We have zero songs and 10 The Smiths covers
-                    (eleventh coming soon). We are activley looking for a drummer.
-                    I like sports such as basketball where Im a recreational player for
-                    the mighty Borac Ledine. Other than that Im a frequent gym goer,
-                    mountain hiking enthusiast and coffe drinking expert.
-                    Peak Gold I in League because Im cursed.
-                    In three words i would describe myslef as: Creative, Problem-solving,
-                    Niche. Thats 4 words but this is my site so I can do what ever I want.
-                    If you are still reading this, thank you for going trough my intrests
-                    tangent and have a nice day, In the words of the
-                    great late Ozzy Ousbourne <i>euugh somebodies been in my fridge
-                        drinking my beer...</i>
+                    My journey started when I was a lil jit. I was always interested in computers,
+                    in the inner workings of software, and in how one box with flickering lights
+                    can contain all the knowledge of the world (and friv games too).
+                    I attended ETŠ Zemun high school, where I finished as one of the best students
+                    of my generation. I owe a lot to the professors there, who taught me plenty and
+                    put up with my tomfoolery for 4 years.
+                </p>
+                <p>
+                    After graduating in 2022, I enrolled at the Faculty of Technical Sciences at
+                    Singidunum University and earned my bachelor's degree. That's where I truly
+                    expanded my knowledge of software architecture and project management and went
+                    from a curious programmer to a full-on software engineer.
+                </p>
+                <hr class="cs-hr">
+                <h3>Interests (yap session)</h3>
+                <p>
+                    As I mentioned above, I love software development, so in my free time I like to
+                    expand my knowledge by building fun personal projects. Other than that, I like to
+                    think of myself as a creative person. I've come to the personal conclusion that I
+                    have the best and most niche music taste in the world.
+                </p>
+                <p>
+                    I play the bass guitar in a fake band called Kolosek (est. 2024) with a friend.
+                    We have zero songs and 10 The Smiths covers (eleventh coming soon). We are
+                    actively looking for a drummer.
+                </p>
+                <p>
+                    I like sports, such as basketball, where I'm a recreational player for the mighty
+                    Borac Ledine. Other than that, I'm a frequent gym goer, a mountain hiking
+                    enthusiast and a coffee drinking expert. Peak Gold I in League because I'm cursed.
+                </p>
+                <p>
+                    In three words I would describe myself as: Creative, Problem-solving, Niche.
+                    That's 4 words, but this is my site so I can do whatever I want. If you are still
+                    reading this, thank you for going through my interests tangent, and have a nice
+                    day. In the words of the great late Ozzy Osbourne:
+                    <i style="opacity: 0.7;">euugh somebody's been in my fridge drinking my beer...</i>
                 </p>
             </div>
             <input class="radiotab" tabindex="1" name="tabs" type="radio" id="tabtwo" />
@@ -437,34 +478,10 @@
                     </dialog>
                 </section><br>
             </div>
-            <input class="radiotab" tabindex="1" name="tabs" type="radio" id="tabfive" />
-            <label class="label" for="tabfive">Contact</label>
-            <div class="panel" tabindex="1" style="user-select: text !important;">
-                <h2>Contact info and my socials</h2><br>
-
-
-                <p style="font-size: large;">My work E-mail: <br> &nbsp; nikolap1205@gmail.com</p><br>
-
-
-                <div class="cs-tooltip" style="padding-bottom: 10px;">
-                    <a href="https://www.linkedin.com/in/nikola-popovic4949" style="font-size: large;">LinkedIn</a>
-                    <span style="left: 125%" class="text">linkedin.com/in/nikola-popovic4949</span>
-                </div><br>
-                <div class="cs-tooltip" style="padding-bottom: 10px;">
-                    <a href="https://github.com/ppo49" style="font-size: large;">GitHub</a>
-                    <span style="left: 125%" class="text">github.com/ppo49</span>
-                </div><br>
-                <div class="cs-tooltip" style="padding-bottom: 10px;">
-                    <a href="https://www.instagram.com/nikolapopovic49/" style="font-size: large;">Instagram</a>
-                    <span style="left: 125%" class="text">instagram.com/nikolapopovic49</span>
-                </div>
-
-                </ul>
-            </div>
             <input class="radiotab" tabindex="1" name="tabs" type="radio" id="tabsix" />
             <label class="label" for="tabsix">Blog</label>
             <div class="panel" tabindex="1" style="user-select: text !important;">
-                <h2 style="padding-bottom: 20px;">Blog</h2>
+                <h2 style="padding-bottom: 20px;">My thoughts (yapping session)</h2>
                 <div id="blog-list"></div>
 
                 <dialog class="cs-dialog" id="blog-dialog">
